@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Depo Yönetim Sistemi — Proje Tanıtımı</title>
+<meta name="description" content="Hastane deposu için uçtan uca stok, sipariş, miad ve birim seviye yönetimi. Osman Kalyoncu tarafından tasarlanıp geliştirildi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --koyu: #12302E; --yesil: #0F5C55; --acik: #E8F1EF; --zemin: #F6F8F7; --yazi: #1B2430; --soluk: #4A5562; --vurgu: #E0A43A; --cizgi: #D3DEDB; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--zemin); color: var(--yazi); font: 17px/1.6 'Source Sans 3', 'Segoe UI', Arial, sans-serif; }
+  h1, h2, h3 { font-family: Manrope, 'Segoe UI', sans-serif; line-height: 1.2; margin: 0; color: var(--koyu); }
+  a { color: var(--yesil); }
+  .kap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  header.hero { background: var(--koyu); color: #fff; padding: 56px 0 64px; }
+  header.hero h1 { color: #fff; font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -.5px; }
+  header.hero .alt { color: var(--vurgu); font-family: Manrope, sans-serif; font-weight: 700; font-size: 18px; margin: 10px 0 18px; }
+  header.hero p { color: #D5E4E1; max-width: 760px; margin: 0 0 22px; }
+  .etiketler { display: flex; flex-wrap: wrap; gap: 8px; }
+  .etiketler span { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 4px 12px; font-size: 14px; color: #EAF3F1; }
+  .video { margin-top: 34px; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.35); background: #000; }
+  .video video { display: block; width: 100%; height: auto; }
+  .not { font-size: 14px; color: #A9C9C4; margin-top: 12px; }
+  section { padding: 56px 0 8px; }
+  section > .kap > h2 { font-size: clamp(24px, 3.4vw, 32px); font-weight: 800; margin-bottom: 8px; }
+  .giris { color: var(--soluk); max-width: 820px; margin: 0 0 26px; }
+  .iki { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .kart { background: #fff; border: 1px solid var(--cizgi); border-radius: 12px; padding: 18px 20px; }
+  .kart h3 { font-size: 17px; margin-bottom: 6px; color: var(--yesil); }
+  .kart p { margin: 0; color: var(--yazi); }
+  .roller { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .ekran { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 28px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--cizgi); }
+  .ekran:nth-of-type(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); }
+  .ekran:nth-of-type(even) .gorsel { order: 2; }
+  .ekran .gorsel a { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--cizgi); box-shadow: 0 8px 26px rgba(18,48,46,.12); background: #fff; }
+  .ekran .gorsel img { display: block; width: 100%; height: auto; }
+  .ekran .gorsel.dar a { max-width: 520px; margin: 0 auto; }
+  .ekran h3 { font-size: 22px; margin-bottom: 8px; }
+  .ekran .kim { display: inline-block; font-size: 13px; font-weight: 700; color: var(--yesil); background: var(--acik); border-radius: 999px; padding: 2px 10px; margin-bottom: 10px; }
+  .ekran ul { margin: 10px 0 0; padding-left: 20px; }
+  .ekran li { margin: 4px 0; }
+  .etki { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .etki .kart b { display: block; font-family: Manrope, sans-serif; color: var(--koyu); margin-bottom: 4px; }
+  .teknik { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; padding: 0; margin: 0; list-style: none; }
+  .teknik li { padding-left: 22px; position: relative; }
+  .teknik li::before { content: ''; position: absolute; left: 4px; top: 11px; width: 8px; height: 8px; border-radius: 2px; background: var(--yesil); }
+  footer { margin-top: 64px; background: var(--koyu); color: #D5E4E1; padding: 34px 0; font-size: 15px; }
+  footer b { color: #fff; font-family: Manrope, sans-serif; }
+  footer a { color: var(--vurgu); }
+  @media (max-width: 860px) {
+    .iki, .roller, .etki, .teknik { grid-template-columns: minmax(0, 1fr); }
+    .ekran, .ekran:nth-of-type(even) { grid-template-columns: minmax(0, 1fr); }
+    .ekran:nth-of-type(even) .gorsel { order: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kap">
+    <h1>Depo Yönetim Sistemi</h1>
+    <div class="alt">Hastane deposu için uçtan uca stok, sipariş, miad ve birim seviye yönetimi</div>
+    <p>Hastane bilgi yönetim sisteminin (HBYS) karşılamadığı depo süreçleri için geliştirdiğim, depo, satın alma, muhasebe, saha personeli ve hastane birimlerinin ortak kullandığı web tabanlı sistem. Bir özel hastanede, hastanenin kendi sunucusunda günlük olarak kullanılıyor.</p>
+    <div class="etiketler">
+      <span>Stok ve sipariş önerisi</span><span>Sipariş–sevkiyat takibi</span><span>Birim min–kritik–max</span><span>Miad ve lot yönetimi</span><span>Kullanım analizi</span><span>Rol bazlı ekranlar</span>
+    </div>
+    <div class="video">
+      <video controls preload="metadata" poster="02-ana-sayfa.jpg" playsinline>
+        <source src="depo-yonetim-tanitim.mp4" type="mp4">
+        Tarayıcınız videoyu oynatamıyor. <a href="depo-yonetim-tanitim.mp4">Videoyu indirin</a>.
+      </video>
+    </div>
+    <div class="not">Görüntüler ve video, anonimleştirilmiş örnek verilerle hazırlanmıştır; kurum, tedarikçi ve kişi adları gerçek değildir. Kaynak kod paylaşılmamaktadır.</div>
+  </div>
+</header>
+
+<section>
+  <div class="kap">
+    <h2>İhtiyaç ve çözüm</h2>
+    <p class="giris">Depo süreçlerinin önemli bir kısmı HBYS dışında; Excel dosyaları, telefon ve e-postayla, dağınık şekilde yürüyordu.</p>
+    <div class="iki">
+      <div class="kart"><h3>Önce</h3><p>Hangi ürünün kaç gün içinde biteceği, hangi siparişin geldiği, birimlerin min–max seviyelerinin doğruluğu ve miadı yaklaşan ürünler ayrı ayrı dosyalardan, elle takip ediliyordu. Satın alma ve birimler güncel bilgiyi depoya sorarak öğreniyordu.</p></div>
+      <div class="kart"><h3>Sonra</h3><p>HBYS'den alınan hareket, stok, lot ve fatura dökümleri tek bir veri havuzunda toplanıyor; hesaplar otomatik yapılıyor ve her ekip kendi ekranında, aynı güncel veriyi görüyor. Hasta bilgisi (ad, numara, doktor) sistemde hiç saklanmıyor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kap">
+    <h2>Kimler kullanıyor</h2>
+    <p class="giris">Her rol yalnızca kendi işine ait ekranları görür; yetkiler kişi kişi verilir.</p>
+    <div class="roller">
+      <div class="kart"><h3>Depo sorumlusu</h3><p>Stok, sipariş, birim seviyeleri, miad, analizler ve bütün ayarlar.</p></div>
+      <div class="kart"><h3>Saha personeli</h3><p>Gelen sevkiyatı girer, etiket basar; tamamlananları ve miadı yakın ürünleri görür.</p></div>
+      <div class="kart"><h3>Hastane birimleri</h3><p>Şifresiz ekrandan kendi min–kritik–max seviyelerini gözden geçirir ve gönderir.</p></div>
+      <div class="kart"><h3>Satın alma</h3><p>Bekleyen siparişler, termin girişi, muadil sorgu ve stoğu bitmek üzere olan ürünler.</p></div>
+      <div class="kart"><h3>Muhasebe</h3><p>İcmaller, faturalar ve depoyla yazışma.</p></div>
+      <div class="kart"><h3>Yönetim</h3><p>Seçilen raporlar: genel analiz, kullanım analizi, sayım raporları.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kap">
+    <h2>Ekranlar</h2>
+    <p class="giris">Görsellere tıklayarak tam boyutta açabilirsiniz.</p>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="01-portal.jpg"><img src="01-portal.jpg" alt="Giriş sonrası ekran seçimi" loading="lazy"></a></div>
+      <div><span class="kim">Herkes</span><h3>Tek giriş, role göre ekranlar</h3><p>Kullanıcı giriş yaptığında yalnızca yetkili olduğu ekranları görür. Mesajlaşma, işlem kaydı, kullanıcı ve yetki yönetimi ile yedekleme aynı yerden yönetilir.</p></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="02-ana-sayfa.jpg"><img src="02-ana-sayfa.jpg" alt="Depo Yönetimi ana sayfa" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Ana sayfa ve depo asistanı</h3><p>Günün özeti tek bakışta: kritik stok, bekleyen talep, aktif sipariş ve sipariş önerisi sayıları; termin takvimi.</p><ul><li>Depo asistanı, Anadepo stoğu biten ya da kullanımı aniden artan ürünleri bildirim olarak çıkarır.</li><li>Her bildirim için karar verilir; kararlar saklanır.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="03-stok-oneri.jpg"><img src="03-stok-oneri.jpg" alt="Stok ve öneri" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Stok &amp; öneri</h3><p>Muadil stokları dahil her ürünün stok günü ve 45 günlük hedefe göre sipariş önerisi.</p><ul><li>İstenen gün sınırının altına düşen ürünler (ör. 8 ya da 10 gün altı).</li><li>"Sadece işleme alınmamışlar": talebi, siparişi ya da yolda muadili olmayan kritik ürünler.</li><li>Ekrandaki liste tek tıkla Excel'e alınır; tek tıkla talep açılır.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="04-siparis-olustur.jpg"><img src="04-siparis-olustur.jpg" alt="Sipariş oluştur" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Sipariş oluştur</h3><p>Kullanım verisinden hesaplanan sipariş listesi: hareket, stok günü, talep ve alım sonrası stok günü yan yana.</p><ul><li>Kutu içi adede göre yuvarlama, istenen ürünleri hariç tutma.</li><li>Mevsimsel kullanım raporu ve depo talep dosyası.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="05-siparis-takip.jpg"><img src="05-siparis-takip.jpg" alt="Sipariş takip" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Sipariş takip</h3><p>Talep → sipariş → teslim → HBYS girişi → fatura zinciri tek satırda.</p><ul><li>Personelin girdiği sevkiyatlar siparişe otomatik işlenir.</li><li>HBYS satın alma girişleri ve faturalar siparişlerle eşleştirilir; "faturada var, teslim kaydı yok" gibi tutarsızlıklar öneri olarak çıkar.</li><li>Tamamlanan siparişlerden doğrudan ürün etiketi basılır.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="06-kat-min-max.jpg"><img src="06-kat-min-max.jpg" alt="Birim depoları seviye belirleme" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Birim depoları min · kritik · max</h3><p>Her birim deposu için son haftaların gerçek kullanımından min, kritik ve max önerisi.</p><ul><li>HBYS'ye yüklenecek aktarım dosyası otomatik hazırlanır.</li><li>Birimlerden gelen revizeler birleştirilir; yalnız Tıbbi Sarf ürünlerini içeren düzeltilmiş liste tek tıkla alınır.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel dar"><a href="19-birim-seviye.jpg"><img src="19-birim-seviye.jpg" alt="Birim ekranı seviye düzenleme" loading="lazy"></a></div>
+      <div><span class="kim">Hastane birimleri</span><h3>Birim ekranı (şifresiz)</h3><p>Birim sorumlusu kendi deposunun önerilen seviyelerini görür; değiştirdiği her ürüne sebep yazar ve depoya gönderir.</p><ul><li>Muadil ürünler ana ürünün altında gösterilir.</li><li>Listede olmayan Tıbbi Sarf ürünü aranıp eklenebilir.</li><li>Depo sorumlusu, değişiklikleri gerekçesiyle mesaj olarak alır.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="07-miad-durum.jpg"><img src="07-miad-durum.jpg" alt="Miad takibi aksiyon planı" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Miad takibi</h3><p>Lot dökümündeki her lot bulunduğu depoda değerlendirilir: miadı geçmiş, 3, 6, 12 ay içinde dolacak.</p><ul><li>Kurtarma önerileri: miadına kadar kullanılamayacak stok, o ürünü hastaya kullanan birime yönlendirilir.</li><li>Aksiyon planı: ayır, etiket yapıştır, öncelikli çıkış, transfer, iade; yapılanlar işaretlenir.</li><li>Karantina: sistemde görünüp gerçekte olmayan ürünler hesaba girmez.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="08-miad-anadepo-aksiyon.jpg"><img src="08-miad-anadepo-aksiyon.jpg" alt="Anadepo aksiyon penceresi" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Anadepo aksiyon tablosu</h3><p>Ürüne tıklandığında ne yapılacağı açıkça yazar: "Miadı dolanları ayır, sistemsel işlemini yap" ya da "Miadı yakın etiketi yapıştır". Her lot ayrı ayrı "yapıldı" olarak işaretlenir.</p></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="09-miad-kontrol-formu.jpg"><img src="09-miad-kontrol-formu.jpg" alt="Miad kontrol formu" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Lotsuz ürünler için miad kontrol formu</h3><p>Lotu sistemde takip edilemeyen, stoğu olan ürünler seçilen hizmet türlerine göre listelenir ve kalite biriminin form şablonunda, gerektiği kadar sayfa Word dosyası olarak alınır. Doküman künyesi sayfadan girilir.</p></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="10-sistemsel-analiz.jpg"><img src="10-sistemsel-analiz.jpg" alt="Sistemsel ürün kullanım analizi" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu · Yönetim</span><h3>Sistemsel ürün kullanım analizi</h3><p>Birime giren malzeme ile hastaya yapılan çıkış karşılaştırılır: hangi birim hangi ürünü alıyor ama sistemden hastaya çıkmıyor, hangisi genel kullanıma çıkıyor.</p><ul><li>Doğru kullanım oranı ve çıkışı yapılmayan tutar.</li><li>Birim ve ürün bazında ayrıntı, Excel çıktısı.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="11-genel-analiz.jpg"><img src="11-genel-analiz.jpg" alt="Genel analiz" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu · Yönetim</span><h3>Genel analiz</h3><p>Ay ay, birim ve ürün bazında Anadepo'dan alınan ve birimde kullanılan miktar ve tutar; artış eğilimleri.</p></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="12-baskin-sayim.jpg"><img src="12-baskin-sayim.jpg" alt="Baskın sayım hazırlığı" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Baskın (habersiz) sayım hazırlığı</h3><p>Birim seçilir; kullanımı düzensiz Tıbbi Sarf ürünleri sorun türüne ve tutara göre sıralanarak, gerekçesiyle önerilir. Seçilenler sayım formu olarak yazdırılır; formda sistem stoğu yer almaz.</p></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel dar"><a href="14-personel-bekleyen.jpg"><img src="14-personel-bekleyen.jpg" alt="Saha personeli ekranı" loading="lazy"></a></div>
+      <div><span class="kim">Saha personeli</span><h3>Saha personeli ekranı</h3><p>Telefon ve tabletten kullanılır. Gelen sevkiyat siparişe girilir, ürün etiketi basılır.</p><ul><li>Tamamlananlar sekmesi: teslimi biten siparişler ve etiket düğmesi.</li><li>Miad sekmesi: miadı geçmiş ve 3 aydan az kalan ürünler, ne yapılacağıyla.</li><li>Muadil sorgu, ödünç takibi, depo sorumlusuna mesaj.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="18-satin-alma-stok.jpg"><img src="18-satin-alma-stok.jpg" alt="Satın alma stok ekranı" loading="lazy"></a></div>
+      <div><span class="kim">Satın alma</span><h3>Satın alma birimi ekranı</h3><p>Bekleyen siparişler ve termin girişi, geçmiş sevkiyatlar, muadil sorgu ve revize önerisi, icmaller.</p><ul><li>Stoğu 7 ve 15 gün içinde bitecek ürünler; iki sayfalı, renkli Excel çıktısı.</li><li>Depo sorumlusu hangi bölümleri göreceğini kullanıcı bazında seçer.</li></ul></div>
+    </div>
+
+    <div class="ekran">
+      <div class="gorsel"><a href="13-veri-havuzu.jpg"><img src="13-veri-havuzu.jpg" alt="Kullanım veri havuzu" loading="lazy"></a></div>
+      <div><span class="kim">Depo sorumlusu</span><h3>Veri havuzu</h3><p>Bütün hesapların tek kaynağı. HBYS hareket, stok, lot ve fatura dökümleri sürükle-bırak yüklenir.</p><ul><li>Aynı gün iki kez yüklense de hareket tekrar sayılmaz; eksik günler takvimde görünür.</li><li>Excel'in bozduğu ürün kodları (bilimsel gösterim, baştaki sıfır, tarihe dönen kod) otomatik eşleştirilir.</li><li>Yükleme ve hesap sırasında gerçek ilerleme yüzdesi gösterilir.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kap">
+    <h2>Sürece etkisi</h2>
+    <p class="giris">Ölçülebilir hedefler yerine, sistemin günlük işte değiştirdikleri:</p>
+    <div class="etki">
+      <div class="kart"><b>Tek doğru veri</b>Depo, satın alma, muhasebe, saha ve birimler aynı güncel bilgiyi görüyor; bilgi sormak için yapılan telefon ve e-posta trafiği azaldı.</div>
+      <div class="kart"><b>Önceden görülen tükenme</b>Birkaç gün içinde bitecek ve henüz işleme alınmamış ürünler tek ekranda.</div>
+      <div class="kart"><b>Daha az imha</b>Miadı yaklaşan lotlar kullanabilecek birime yönlendiriliyor; miadı geçenlerin işlemi takip ediliyor.</div>
+      <div class="kart"><b>Ölçülebilir seviyeler</b>Birim min–max değerleri kullanım verisine dayanıyor; her değişiklik gerekçesiyle kayıtlı.</div>
+      <div class="kart"><b>Manuel işin otomasyonu</b>Seviye aktarım dosyaları, talep listeleri, kontrol formları ve raporlar tek tıkla hazırlanıyor.</div>
+      <div class="kart"><b>İzlenebilirlik</b>Her işlem kim / ne zaman kaydıyla tutuluyor; rol bazlı erişim ve otomatik yedekleme kalite süreçlerini destekliyor.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kap">
+    <h2>Teknik özet</h2>
+    <p class="giris">Tek kişi tarafından tasarlandı, geliştirildi ve hastanenin sanal sunucusunda canlıya alındı.</p>
+    <ul class="teknik">
+      <li>Node.js sunucu, harici paket gerektirmeyen kurulum</li>
+      <li>Tarayıcı tabanlı arayüz; bilgisayar, tablet ve telefon</li>
+      <li>SQLite veritabanı, otomatik ve zamanlı yedekleme</li>
+      <li>HTTPS, yerel sertifika yetkilisi</li>
+      <li>Rol ve kullanıcı bazlı yetkilendirme, işlem kaydı</li>
+      <li>Eşzamanlı çalışma ve ekranlar arası anlık yansıma</li>
+      <li>Excel ve Word çıktıları (aktarım dosyaları, formlar, raporlar)</li>
+      <li>Hasta kimlik bilgisi saklanmaz</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="kap">
+    <b>Osman Kalyoncu</b> · Depo ve Operasyon Yöneticisi · Süreç Dijitalleştirme<br>
+    <a href="https://www.linkedin.com/in/osmankalyoncu/">linkedin.com/in/osmankalyoncu</a> · <a href="mailto:kalyoncu.osmn@gmail.com">kalyoncu.osmn@gmail.com</a>
+  </div>
+</footer>
+</body>
+</html>
